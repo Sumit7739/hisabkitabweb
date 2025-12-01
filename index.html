@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hisab Kitab - Smart Digital Ledger</title>
+    <meta name="description" content="Manage your finances, track expenses, and handle group settlements with Hisab Kitab.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+        .popup-content {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .popup-header h3 {
+            margin: 0;
+        }
+        .close-popup {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #555;
+        }
+        .popup-content .btn-primary {
+            margin-top: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">
+                <i data-lucide="book-open"></i>
+                <span>Hisab Kitab</span>
+            </a>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#changelog">Changelog</a>
+                <a href="#" class="btn-primary open-download-popup">Download</a>
+            </div>
+            <div class="mobile-menu-button">
+                <i data-lucide="menu"></i>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <span class="badge">v2.3.5 is now available</span>
+                <h1>Master Your Finances with <span class="highlight">Hisab Kitab</span></h1>
+                <p>The most intuitive way to track personal expenses and manage group settlements. Offline-first, secure, and beautifully designed.</p>
+                <div class="cta-group">
+                    <a href="#" class="btn-primary open-download-popup">
+                        <i data-lucide="download"></i> Download APK
+                    </a>
+                    <a href="#features" class="btn-secondary">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <!-- Placeholder for App Screenshot -->
+                <div class="phone-mockup">
+                    <div class="screen">
+                        <div class="app-header">
+                            <i data-lucide="menu"></i>
+                            <span>Dashboard</span>
+                            <i data-lucide="bell"></i>
+                        </div>
+                        <div class="app-card">
+                            <span>Total Balance</span>
+                            <h3>₹ 12,450.00</h3>
+                        </div>
+                        <div class="app-list">
+                            <div class="list-item"></div>
+                            <div class="list-item"></div>
+                            <div class="list-item"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Hisab Kitab?</h2>
+                <p>Built for simplicity, engineered for performance.</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="icon-box">
+                        <i data-lucide="wifi-off"></i>
+                    </div>
+                    <h3>Offline First</h3>
+                    <p>Works perfectly without internet. Your data is stored locally and syncs when you're back online.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-box">
+                        <i data-lucide="users"></i>
+                    </div>
+                    <h3>Group Settlements</h3>
+                    <p>Split bills with friends and roommates. Track who owes what with our new Group Page.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-box">
+                        <i data-lucide="bell"></i>
+                    </div>
+                    <h3>Smart Notifications</h3>
+                    <p>Stay updated with real-time alerts for new transactions and settlement requests.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-box">
+                        <i data-lucide="shield"></i>
+                    </div>
+                    <h3>Persistent Login</h3>
+                    <p>Secure and convenient. Stay logged in with our improved session management.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="changelog" class="changelog">
+        <div class="container">
+            <div class="changelog-wrapper">
+                <div class="changelog-header">
+                    <h2>What's New</h2>
+                    <p>Latest updates in version 2.3.5</p>
+                </div>
+                <div class="changelog-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="version">v2.3.5</span>
+                            <span class="date">Dec 1, 2025</span>
+                            <ul>
+                                <li>✨ <strong>Brand New UI:</strong> Completely redesigned interface for a modern look.</li>
+                                <li>👥 <strong>Group Page:</strong> Manage shared expenses easily.</li>
+                                <li>🔔 <strong>Notification System:</strong> Smart popups and notification center.</li>
+                                <li>⚙️ <strong>Enhanced Settings:</strong> More control over your profile and app.</li>
+                                <li>🐛 <strong>Bug Fixes:</strong> Fixed layout issues and improved performance.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="download" class="download">
+        <div class="container">
+            <div class="download-card">
+                <div class="download-text">
+                    <h2>Ready to get started?</h2>
+                    <p>Download the latest version of Hisab Kitab for Android today and take control of your finances.</p>
+                </div>
+                <div class="download-action">
+                    <div class="download-buttons">
+                        <a href="#" class="btn-primary large open-download-popup">
+                            <i class="fa-brands fa-android"></i>
+                             Download for Android
+                        </a>
+                        <a href="https://github.com/Sumit7739/hisabkitab_appv2" class="btn-secondary large">
+                            <i data-lucide="github"></i> View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="download-popup" class="popup-overlay" style="display: none;">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3>Download Hisab Kitab v2.3.5</h3>
+                <button class="close-popup"><i data-lucide="x"></i></button>
+            </div>
+            <p>You are downloading the latest stable release. Click the button below to start.</p>
+            <a href="https://github.com/Sumit7739/hisabkitab_appv2/releases/download/v2.3.5/HisabKitab.apk" class="btn-primary large">
+                <i data-lucide="download"></i> Download Now
+                <span class="sub-text">v2.3.5 • APK</span>
+            </a>
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Hisab Kitab. Built with ❤️ by Sumit.</p>
+            <div class="social-links">
+                <a href="#"><i data-lucide="twitter"></i></a>
+                <a href="#"><i data-lucide="github"></i></a>
+                <a href="#"><i data-lucide="instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const popup = document.getElementById('download-popup');
+            const openButtons = document.querySelectorAll('.open-download-popup');
+            const closeButtons = document.querySelectorAll('.close-popup');
+
+            function openPopup(e) {
+                e.preventDefault();
+                popup.style.display = 'flex';
+                lucide.createIcons(); // Re-render icons if they are in the popup
+            }
+
+            function closePopup() {
+                popup.style.display = 'none';
+            }
+
+            openButtons.forEach(btn => btn.addEventListener('click', openPopup));
+            closeButtons.forEach(btn => btn.addEventListener('click', closePopup));
+            popup.addEventListener('click', (e) => { if (e.target === popup) closePopup(); });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuButton.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            // Optional: change icon to 'x' when menu is open
+            mobileMenuButton.innerHTML = navLinks.classList.contains('active') ? '<i data-lucide="x"></i>' : '<i data-lucide="menu"></i>';
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
